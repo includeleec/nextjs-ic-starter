@@ -85,9 +85,14 @@ export const useGlobalContext = () => {
     return context
 }
 
-export const useAxon = () => {
+export const useHello = () => {
     const context = useGlobalContext()
-    return context.state.axon
+    return context.state.hello
+}
+
+export const useWhoami = () => {
+    const context = useGlobalContext()
+    return context.state.whoami
 }
 
 export const useHideZeroBalances = () => {

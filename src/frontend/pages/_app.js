@@ -2,6 +2,7 @@ import Head from 'next/head'
 import 'react'
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import Store from '@/components/Store/Store'
 import Nav from '@/components/Layout/Nav'
 import { ONE_HOUR_MS } from '@/lib/constants'
@@ -35,7 +36,7 @@ export default function App({ Component, pageProps }) {
                 </div>
             </Store>
 
-            {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+            <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
     )
 }
