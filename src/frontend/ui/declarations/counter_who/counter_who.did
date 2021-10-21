@@ -1,0 +1,7 @@
+type Counter = 
+ service {
+   bump: () -> (nat);
+   inc: () -> ();
+   read: () -> (nat);
+ };
+service : (nat) -> Counter

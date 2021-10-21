@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap");
+
+textarea,
+input[type="text"],
+input[type="url"],
+input[type="number"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="button"],
+button,
+select {
+  @apply border-gray-300 rounded-md focus:ring-2 focus:ring-opacity-50 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none;
+}
+.react-select input[type="text"] {
+  @apply focus:outline-none focus:ring-0;
+}
+
+input[type="radio"] {
+  @apply rounded-full focus:ring-2 focus:ring-opacity-50 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none;
+}
+
+input[type="checkbox"] {
+  @apply border-gray-300 rounded-sm focus:ring-2 focus:ring-opacity-50 focus:ring-indigo-500 focus:border-indigo-500 focus:outline-none;
+}
+
+.btn-cta {
+  @apply text-white transition-colors bg-indigo-600 hover:bg-indigo-500;
+}
+.btn-cta-disabled {
+  @apply text-white bg-indigo-300;
+}
+.btn-secondary {
+  @apply text-indigo-800 transition-colors bg-indigo-200 hover:bg-indigo-100;
+}
+.btn-secondary-disabled {
+  @apply text-indigo-300 bg-indigo-100;
+}
