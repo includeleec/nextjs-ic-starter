@@ -5,6 +5,7 @@ import PlugConnect from '@psychedelic/plug-connect'
 // import { StoicIdentity } from "ic-stoic-identity";
 import React, { useEffect, useState } from 'react'
 import { canisterId as HelloCanisterId } from '@/declarations/hello'
+import { canisterId as WhoamiCanisterId } from '@/declarations/whoami'
 import { HOST, IDENTITY_PROVIDER } from '@/lib/canisters'
 import { ONE_WEEK_NS } from '@/lib/constants'
 import Modal from '@/components/Layout/Modal'
@@ -20,6 +21,9 @@ export default function LoginButton() {
     } = useGlobalContext()
     const setAgent = useSetAgent()
     const [authClient, setAuthClient] = useState(null)
+
+    // plug call canister whitelist
+    const whitelist = [HelloCanisterId, WhoamiCanisterId]
 
     const handleAuthenticated = async (authClient) => {
         const identity = authClient.getIdentity()
@@ -101,7 +105,7 @@ export default function LoginButton() {
                 // if (!connected) await window.ic.plug.requestConnect({ whitelist, host });
                 if (!window.ic.plug.agent) {
                     await window.ic.plug.createAgent({
-                        whitelist: [HelloCanisterId],
+                        whitelist,
                         host: HOST
                     })
                 }
@@ -134,7 +138,7 @@ export default function LoginButton() {
                     </button>
 
                     <PlugConnect
-                        whitelist={[HelloCanisterId]}
+                        whitelist={whitelist}
                         host={HOST}
                         onConnectCallback={handlePlugLogin}
                     />

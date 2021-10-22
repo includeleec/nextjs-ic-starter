@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useGreet } from '@/lib/hooks/useGreet'
+import { useWhoareyou } from '@/lib/hooks/useWhoami'
 
 
-export default function GreetBox({ name }) {
+export default function WhoamiBox({ name }) {
     const [res,setRes] = useState()
 
 
@@ -18,14 +18,14 @@ export default function GreetBox({ name }) {
       mutateAsync,
       reset,
       status,
-    } = useGreet();
+    } = useWhoareyou();
 
 
     return <div className="flex flex-col">
-        <p className="mb-2">don't need login, can greet</p>
+        <p className="my-2">need login, can call</p>
         <button className="px-2 py-1 transition-shadow bg-white rounded-md hover:shadow-lg transition-300" onClick={() => mutate({ name },{
         onSuccess: (data) => {  console.log('mutation success', setRes(data)) },
-      })}>greet</button>
+      })}>call who are you</button>
       <p className="mt-4">{!isLoading ? data : 'loading'}</p>
  
     </div>

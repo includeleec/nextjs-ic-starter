@@ -1,5 +1,5 @@
 import type { Principal } from '@dfinity/principal';
 export interface _SERVICE {
-  'id' : () => Promise<Principal>,
-  'whoami' : () => Promise<Principal>,
+  'id' : () => Promise<string>,
+  'whoareyou' : (arg_0: string) => Promise<string>,
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import IdentifierLabelWithButtons from '@/components/Buttons/IdentifierLabelWithButtons'
 import LoginButton from '@/components/Buttons/LoginButton'
 import { useGlobalContext } from '@/components/Store/Store'
@@ -22,6 +23,14 @@ export default function Nav() {
                     </div>
                 )}
                 <LoginButton />
+            </div>
+            <div className="flex">
+                <Link href="/">
+                    <button className="px-2 py-2 mx-2 bg-white">home</button>
+                </Link>
+                <Link href="whoami">
+                    <button className="px-2 py-2 mx-2 bg-white">who am i</button>
+                </Link>
             </div>
         </nav>
     )

@@ -1,4 +1,4 @@
 service : {
-  id: () -> (principal);
-  whoami: () -> (principal);
+  id: () -> (text);
+  whoareyou: (text) -> (text);
 }

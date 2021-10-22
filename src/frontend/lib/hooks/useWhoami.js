@@ -1,16 +1,16 @@
 import { useMutation  } from 'react-query'
-import { useHello } from '@/components/Store/Store'
+import { useWhoami } from '@/components/Store/Store'
 import { tryCall } from '@/lib/utils'
 
-export const useGreet = () => {
-    const hello = useHello()
+export const useWhoareyou = () => {
+    const whoami = useWhoami()
 
     return useMutation(
-        'greet',
+        'whoami',
         async ({ name }) => {
             try {
-                console.log('hello', hello, name)
-                const result = await tryCall(() => hello.greet(name))
+                console.log('whoami', whoami, name)
+                const result = await tryCall(() => whoami.whoareyou(name))
 
                 console.log('trycall result', result)
 
