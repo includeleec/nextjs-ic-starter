@@ -11,6 +11,7 @@ export const useGreet = () => {
             try {
                 console.log('hello', hello, name)
                 const result = await tryCall(() => hello.greet(name))
+                // const result = await hello.greet(name)
 
                 console.log('trycall result', result)
 

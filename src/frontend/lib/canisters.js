@@ -8,7 +8,7 @@ export const HOST =
 
 export const IDENTITY_PROVIDER =
     process.env.NEXT_PUBLIC_DFX_NETWORK === 'local'
-        ? 'http://ryjl3-tyaaa-aaaaa-aaaba-cai.localhost:8000'
+        ? 'http://localhost:8000?canisterId=rwlgt-iiaaa-aaaaa-aaaaa-cai'
         : undefined
 
 export const defaultAgent = new HttpAgent({

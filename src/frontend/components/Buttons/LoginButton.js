@@ -1,10 +1,13 @@
-import { HttpAgent, Identity } from '@dfinity/agent'
+import { HttpAgent } from '@dfinity/agent'
 import { AuthClient } from '@dfinity/auth-client'
 import { Ed25519KeyIdentity } from '@dfinity/identity'
 import PlugConnect from '@psychedelic/plug-connect'
 // import { StoicIdentity } from "ic-stoic-identity";
 import React, { useEffect, useState } from 'react'
-import { canisterId as HelloCanisterId } from '@/declarations/hello'
+// import { canisterId as HelloCanisterId } from '@/declarations/hello'
+import {
+    canisterId as HelloCanisterId,
+} from 'declarations/hello'
 import { canisterId as WhoamiCanisterId } from '@/declarations/whoami'
 import { HOST, IDENTITY_PROVIDER } from '@/lib/canisters'
 import { ONE_WEEK_NS } from '@/lib/constants'
@@ -27,6 +30,8 @@ export default function LoginButton() {
 
     const handleAuthenticated = async (authClient) => {
         const identity = authClient.getIdentity()
+        console.log('identity', identity)
+
         setAgent({
             agent: new HttpAgent({
                 identity,
@@ -37,12 +42,15 @@ export default function LoginButton() {
         closeModal()
     }
 
-    const handleIILogin = () =>
+    const handleIILogin =  () => {
+
         authClient.login({
             identityProvider: IDENTITY_PROVIDER,
             maxTimeToLive: ONE_WEEK_NS,
-            onSuccess: () => handleAuthenticated(authClient)
+            onSuccess: ()=> handleAuthenticated(authClient),
         })
+
+    }
 
     const handleIILogout = async () => {
         await authClient.logout()
@@ -142,8 +150,6 @@ export default function LoginButton() {
                         host={HOST}
                         onConnectCallback={handlePlugLogin}
                     />
-
-                    
                 </div>
             </Modal>
         </>

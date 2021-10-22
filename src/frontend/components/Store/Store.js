@@ -3,12 +3,22 @@ import { defaultAgent } from 'lib/canisters'
 
 import { canisterId as helloCanisterId, createActor as createHelloActor } from 'declarations/hello'
 
-import { canisterId as whoamiCanisterId, createActor as createWhoamiActor } from 'declarations/whoami'
+import {
+    canisterId as whoamiCanisterId,
+    createActor as createWhoamiActor
+} from 'declarations/whoami'
 
 const reducer = (state, action) => {
     switch (action.type) {
         case 'SET_AGENT':
+            console.log('agent', action.agent)
             const agent = action.agent || defaultAgent
+
+            // Fetch root key for certificate validation during development
+            // if (process.env.NEXT_PUBLIC_DFX_NETWORK === 'local') {
+            //     agent.fetchRootKey()
+            // }
+
             return {
                 ...state,
                 agent,
